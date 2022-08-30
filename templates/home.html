@@ -1,0 +1,21 @@
+{% extends 'template.html' %}
+
+{% block title %}PetZone{% endblock %}
+
+{% block content %}
+
+<h1>Pets:</h1>
+{% for msg in get_flashed_messages() %}
+    <p> {{ msg }} </p>
+{% endfor %}
+<a href = "/add">Add a Pet</a>
+{% for pet in pets %}
+<td><h2><a href=/{{pet.id}}>{{pet.name}}</h2></a>
+<img src="{{ pet.image_url() }}">
+<p>
+{% if pet.available %} Available! {% endif %}
+</p>
+</td>
+{% endfor %}
+
+{% endblock %}
